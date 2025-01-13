@@ -2,8 +2,7 @@
 -- Plugins that make the user interface better.
 
 --    Sections:
---       -> tokyonight                  [theme]
---       -> astrotheme                  [theme]
+--       -> solarized                   [theme]
 --       -> alpha-nvim                  [greeter]
 --       -> nvim-notify                 [notifications]
 --       -> mini.indentscope            [guides]
@@ -29,26 +28,8 @@ return {
   --  tokyonight [theme]
   --  https://github.com/folke/tokyonight.nvim
   {
-    "folke/tokyonight.nvim",
+    "ishan9299/nvim-solarized-lua",
     event = "User LoadColorSchemes",
-    opts = {
-      dim_inactive = false,
-      styles = {
-        comments = { italic = true },
-        keywords = { italic = true },
-      },
-    }
-  },
-
-  --  astrotheme [theme]
-  --  https://github.com/AstroNvim/astrotheme
-  {
-    "AstroNvim/astrotheme",
-    event = "User LoadColorSchemes",
-    opts = {
-      palette = "astrodark",
-      plugins = { ["dashboard-nvim"] = true },
-    },
   },
 
   --  alpha-nvim [greeter]
@@ -60,92 +41,11 @@ return {
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
 
-      -- Header
-      -- dashboard.section.header.val = {
-      --   "                                                                     ",
-      --   "       ████ ██████           █████      ██                     ",
-      --   "      ███████████             █████                             ",
-      --   "      █████████ ███████████████████ ███   ███████████   ",
-      --   "     █████████  ███    █████████████ █████ ██████████████   ",
-      --   "    █████████ ██████████ █████████ █████ █████ ████ █████   ",
-      --   "  ███████████ ███    ███ █████████ █████ █████ ████ █████  ",
-      --   " ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
-      -- }
-      -- dashboard.section.header.val = {
-      --   '                                        ▟▙            ',
-      --   '                                        ▝▘            ',
-      --   '██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
-      --   '██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██',
-      --   '██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██',
-      --   '██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██',
-      --   '▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
-      -- }
-      -- dashboard.section.header.val = {
-      --   '                    ▟▙            ',
-      --   '                    ▝▘            ',
-      --   '██▃▅▇█▆▖  ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
-      --   '██▛▔ ▝██  ▝██  ██▘  ██  ██▛▜██▛▜██',
-      --   '██    ██   ▜█▙▟█▛   ██  ██  ██  ██',
-      --   '██    ██   ▝████▘   ██  ██  ██  ██',
-      --   '▀▀    ▀▀     ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
-      -- }
-      -- Generated with https://www.fancytextpro.com/BigTextGenerator/Larry3D
-      -- dashboard.section.header.val = {
-      --   [[ __  __                  __  __                     ]],
-      --   [[/\ \/\ \                /\ \/\ \  __                ]],
-      --   [[\ \ `\\ \     __    ___ \ \ \ \ \/\_\    ___ ___    ]],
-      --   [[ \ \ , ` \  /'__`\ / __`\\ \ \ \ \/\ \ /' __` __`\  ]],
-      --   [[  \ \ \`\ \/\  __//\ \L\ \\ \ \_/ \ \ \/\ \/\ \/\ \ ]],
-      --   [[   \ \_\ \_\ \____\ \____/ \ `\___/\ \_\ \_\ \_\ \_\]],
-      --   [[    \/_/\/_/\/____/\/___/   `\/__/  \/_/\/_/\/_/\/_/]],
-      -- }
-      --  dashboard.section.header.val = {
-      --   '                                                     ',
-      --   '  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
-      --   '  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ',
-      --   '  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ',
-      --   '  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ',
-      --   '  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
-      --   '  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
-      --   '                                                     ',
-      -- }
-      -- dashboard.section.header.val = {
-      --   [[                __                ]],
-      --   [[  ___   __  __ /\_\    ___ ___    ]],
-      --   [[/' _ `\/\ \/\ \\/\ \ /' __` __`\  ]],
-      --   [[/\ \/\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-      --   [[\ \_\ \_\ \___/  \ \_\ \_\ \_\ \_\]],
-      --   [[ \/_/\/_/\/__/    \/_/\/_/\/_/\/_/]],
-      -- }
-
-      if is_android then
-        dashboard.section.header.val = {
-          [[         __                ]],
-          [[ __  __ /\_\    ___ ___    ]],
-          [[/\ \/\ \\/\ \ /' __` __`\  ]],
-          [[\ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-          [[ \ \___/  \ \_\ \_\ \_\ \_\]],
-          [[  \/__/    \/_/\/_/\/_/\/_/]],
-        }
-      else
-        dashboard.section.header.val = {
-          [[888b      88                                                           88]],
-          [[8888b     88                                                           88]],
-          [[88 `8b    88                                                           88]],
-          [[88  `8b   88   ,adPPYba,   8b,dPPYba,  88,dPYba,,adPYba,   ,adPPYYba,  88]],
-          [[88   `8b  88  a8"     "8a  88P'   "Y8  88P'   "88"    "8a  ""     `Y8  88]],
-          [[88    `8b 88  8b       d8  88          88      88      88  ,adPPPPP88  88]],
-          [[88     `8888  "8a,   ,a8"  88          88      88      88  88,    ,88  88]],
-          [[88      `888   `"YbbdP"'   88          88      88      88  `"8bbdP"Y8  88]],
-          [[                                    __                ]],
-          [[                      ___   __  __ /\_\    ___ ___    ]],
-          [[                    /' _ `\/\ \/\ \\/\ \ /' __` __`\  ]],
-          [[                    /\ \/\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-          [[                    \ \_\ \_\ \___/  \ \_\ \_\ \_\ \_\]],
-          [[                     \/_/\/_/\/__/    \/_/\/_/\/_/\/_/]],
-        }
-      end
-
+      dashboard.section.header.val = {
+        [[                                     ]],
+        [[                 VIM                 ]],
+        [[                                     ]],
+      }
 
       local get_icon = require("base.utils").get_icon
 
@@ -243,6 +143,7 @@ return {
             vim.bo[buf].syntax = "markdown"
           end
           vim.wo[win].spell = false
+          vim.wo[win].wrap = true
         end,
       }
     end,
@@ -329,55 +230,6 @@ return {
     opts = function()
       local lib = require("heirline-components.all")
       return {
-        opts = {
-          disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
-            local is_disabled = not require("heirline-components.buffer").is_valid(args.buf) or
-                lib.condition.buffer_matches({
-                  buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-                  filetype = {
-                    "NvimTree",
-                    "neo%-tree",
-                    "dashboard",
-                    "Outline",
-                    "aerial",
-                    "rnvimr",
-                    "yazi"
-                  },
-                }, args.buf)
-            return is_disabled
-          end,
-        },
-        tabline = { -- UI upper bar
-          lib.component.tabline_conditional_padding(),
-          lib.component.tabline_buffers(),
-          lib.component.fill { hl = { bg = "tabline_bg" } },
-          lib.component.tabline_tabpages()
-        },
-        winbar = { -- UI breadcrumbs bar
-          init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
-          fallthrough = false,
-          -- Winbar for terminal, neotree, and aerial.
-          {
-            condition = function() return not lib.condition.is_active() end,
-            {
-              lib.component.neotree(),
-              lib.component.compiler_play(),
-              lib.component.fill(),
-              lib.component.compiler_redo(),
-              lib.component.aerial(),
-            },
-          },
-          -- Regular winbar
-          {
-            lib.component.neotree(),
-            lib.component.compiler_play(),
-            lib.component.fill(),
-            lib.component.breadcrumbs(),
-            lib.component.fill(),
-            lib.component.compiler_redo(),
-            lib.component.aerial(),
-          }
-        },
         statuscolumn = { -- UI left column
           init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
           lib.component.foldcolumn(),
@@ -387,16 +239,12 @@ return {
         statusline = { -- UI statusbar
           hl = { fg = "fg", bg = "bg" },
           lib.component.mode(),
-          lib.component.git_branch(),
-          lib.component.file_info(),
-          lib.component.git_diff(),
+          lib.component.file_info { filename = {}, filetype = false },
+          lib.component.fill(),
           lib.component.diagnostics(),
           lib.component.fill(),
           lib.component.cmd_info(),
           lib.component.fill(),
-          lib.component.lsp(),
-          lib.component.compiler_state(),
-          lib.component.virtual_env(),
           lib.component.nav(),
           lib.component.mode { surround = { separator = "right" } },
         },

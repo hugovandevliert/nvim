@@ -183,34 +183,34 @@ return {
   -- nvim-java [java support]
   -- https://github.com/nvim-java/nvim-java
   -- Reliable jdtls support. Must go before mason-lspconfig and lsp-config.
-  {
-    "nvim-java/nvim-java",
-    ft = { "java" },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap",
-      "williamboman/mason.nvim",
-    },
-    opts = {
-      notifications = {
-        dap = false,
-      },
-      -- NOTE: One of these files must be in your project root directory.
-      --       Otherwise the debugger will end in the wrong directory and fail.
-      root_markers = {
-        'settings.gradle',
-        'settings.gradle.kts',
-        'pom.xml',
-        'build.gradle',
-        'mvnw',
-        'gradlew',
-        'build.gradle',
-        'build.gradle.kts',
-        '.git',
-      },
-    },
-  },
+  -- {
+  --   "nvim-java/nvim-java",
+  --   ft = { "java" },
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "neovim/nvim-lspconfig",
+  --     "mfussenegger/nvim-dap",
+  --     "williamboman/mason.nvim",
+  --   },
+  --   opts = {
+  --     notifications = {
+  --       dap = false,
+  --     },
+  --     -- NOTE: One of these files must be in your project root directory.
+  --     --       Otherwise the debugger will end in the wrong directory and fail.
+  --     root_markers = {
+  --       'settings.gradle',
+  --       'settings.gradle.kts',
+  --       'pom.xml',
+  --       'build.gradle',
+  --       'mvnw',
+  --       'gradlew',
+  --       'build.gradle',
+  --       'build.gradle.kts',
+  --       '.git',
+  --     },
+  --   },
+  -- },
 
   --  nvim-lspconfig [lsp configs]
   --  https://github.com/neovim/nvim-lspconfig
@@ -218,7 +218,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "User BaseFile",
-    dependencies = "nvim-java/nvim-java",
+    -- dependencies = "nvim-java/nvim-java",
   },
 
   -- mason-lspconfig [auto start lsp]
@@ -257,7 +257,7 @@ return {
     },
     opts = {
       registries = {
-        "github:nvim-java/mason-registry",
+        -- "github:nvim-java/mason-registry",
         "github:mason-org/mason-registry",
       },
       ui = {
@@ -381,18 +381,14 @@ return {
         { path = "nvim-ufo", mods = { "ufo" } },
         { path = "promise-async", mods = { "promise-async" } },
         { path = "nvim-neoclip.lua", mods = { "neoclip", "telescope" } },
-        { path = "zen-mode.nvim", mods = { "zen-mode" } },
         { path = "vim-suda", mods = { "suda" } }, -- has vimscript
         { path = "vim-matchup", mods = { "matchup", "match-up", "treesitter-matchup" } }, -- has vimscript
-        { path = "hop.nvim", mods = { "hop", "hop-treesitter", "hop-yank" } },
         { path = "nvim-autopairs", mods = { "nvim-autopairs" } },
         { path = "lsp_signature", mods = { "lsp_signature" } },
         { path = "nvim-lightbulb", mods = { "nvim-lightbulb" } },
         { path = "hot-reload.nvim", mods = { "hot-reload" } },
         { path = "distroupdate.nvim", mods = { "distroupdate" } },
 
-        { path = "tokyonight.nvim", mods = { "tokyonight" } },
-        { path = "astrotheme", mods = { "astrotheme" } },
         { path = "alpha-nvim", mods = { "alpha" } },
         { path = "nvim-notify", mods = { "notify" } },
         { path = "mini.indentscope", mods = { "mini.indentscope" } },
@@ -415,7 +411,7 @@ return {
         { path = "ts-comments.nvim", mods = { "ts-comments" } },
         { path = "markdown.nvim", mods = { "render-markdown" } },
         { path = "nvim-highlight-colors", mods = { "nvim-highlight-colors" } },
-        { path = "nvim-java", mods = { "java" } },
+        -- { path = "nvim-java", mods = { "java" } },
         { path = "nvim-lspconfig", mods = { "lspconfig" } },
         { path = "mason-lspconfig.nvim", mods = { "mason-lspconfig" } },
         { path = "mason.nvim", mods = { "mason", "mason-core", "mason-registry", "mason-vendor" } },
@@ -443,7 +439,6 @@ return {
         { path = "dooku.nvim", mods = { "dooku" } },
         { path = "markdown-preview.nvim", mods = { "mkdp" } }, -- has vimscript
         { path = "markmap.nvim", mods = { "markmap" } },
-        { path = "neural", mods = { "neural" } },
         { path = "guess-indent.nvim", mods = { "guess-indent" } },
         { path = "compiler.nvim", mods = { "compiler" } },
         { path = "overseer.nvim", mods = { "overseer", "lualine", "neotest", "resession", "cmp_overseer" } },
@@ -457,13 +452,12 @@ return {
         { path = "neotest-dotnet", mods = { "neotest-dotnet" } },
         { path = "neotest-elixir", mods = { "neotest-elixir" } },
         { path = "neotest-golang", mods = { "neotest-golang" } },
-        { path = "neotest-java", mods = { "neotest-java" } },
+        -- { path = "neotest-java", mods = { "neotest-java" } },
         { path = "neotest-jest", mods = { "neotest-jest" } },
         { path = "neotest-phpunit", mods = { "neotest-phpunit" } },
         { path = "neotest-python", mods = { "neotest-python" } },
         { path = "neotest-rust", mods = { "neotest-rust" } },
         { path = "neotest-zig", mods = { "neotest-zig" } },
-        { path = "nvim-coverage.nvim", mods = { "coverage" } },
         { path = "gutentags_plus", mods = { "gutentags_plus" } }, -- has vimscript
         { path = "vim-gutentags", mods = { "vim-gutentags" } }, -- has vimscript
 

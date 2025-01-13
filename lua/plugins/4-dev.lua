@@ -313,22 +313,22 @@ return {
   --  NOTE: In order for this plugin to work, you will have to set
   --        the next env var in your OS:
   --        OPENAI_API_KEY="my_key_here"
-  {
-    "dense-analysis/neural",
-    cmd = { "Neural" },
-    config = function()
-      require("neural").setup {
-        source = {
-          openai = {
-            api_key = vim.env.OPENAI_API_KEY,
-          },
-        },
-        ui = {
-          prompt_icon = require("base.utils").get_icon("PromptPrefix"),
-        },
-      }
-    end,
-  },
+  -- {
+  --   "dense-analysis/neural",
+  --   cmd = { "Neural" },
+  --   config = function()
+  --     require("neural").setup {
+  --       source = {
+  --         openai = {
+  --           api_key = vim.env.OPENAI_API_KEY,
+  --         },
+  --       },
+  --       ui = {
+  --         prompt_icon = require("base.utils").get_icon("PromptPrefix"),
+  --       },
+  --     }
+  --   end,
+  -- },
 
   --  copilot [github code suggestions]
   --  https://github.com/github/copilot.vim
@@ -857,26 +857,26 @@ return {
   --
   --  If you use other framework or language, refer to nvim-coverage docs:
   --  https://github.com/andythigpen/nvim-coverage/blob/main/doc/nvim-coverage.txt
-  {
-    "zeioth/nvim-coverage", -- Our fork until all our PRs are merged.
-    cmd = {
-      "Coverage",
-      "CoverageLoad",
-      "CoverageLoadLcov",
-      "CoverageShow",
-      "CoverageHide",
-      "CoverageToggle",
-      "CoverageClear",
-      "CoverageSummary",
-    },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      summary = {
-        min_coverage = 80.0, -- passes if higher than
-      },
-    },
-    config = function(_, opts) require("coverage").setup(opts) end,
-  },
+  -- {
+  --   "zeioth/nvim-coverage", -- Our fork until all our PRs are merged.
+  --   cmd = {
+  --     "Coverage",
+  --     "CoverageLoad",
+  --     "CoverageLoadLcov",
+  --     "CoverageShow",
+  --     "CoverageHide",
+  --     "CoverageToggle",
+  --     "CoverageClear",
+  --     "CoverageSummary",
+  --   },
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   opts = {
+  --     summary = {
+  --       min_coverage = 80.0, -- passes if higher than
+  --     },
+  --   },
+  --   config = function(_, opts) require("coverage").setup(opts) end,
+  -- },
 
   -- LANGUAGE IMPROVEMENTS ----------------------------------------------------
   -- guttentags_plus [auto generate C/C++ tags]
