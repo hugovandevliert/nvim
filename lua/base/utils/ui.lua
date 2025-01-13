@@ -312,15 +312,15 @@ end
 
 --- Toggle zen mode
 --- @param bufnr? number the buffer to toggle `zen mode` on.
-function M.toggle_zen_mode(bufnr)
-  bufnr = bufnr or 0
-  if not vim.b[bufnr].zen_mode then
-    vim.b[bufnr].zen_mode = true
-  else
-    vim.b[bufnr].zen_mode = false
-  end
-  utils.notify(string.format("zen mode %s", bool2str(vim.b[bufnr].zen_mode)))
-  vim.cmd "ZenMode"
-end
+-- function M.toggle_zen_mode(bufnr)
+--   bufnr = bufnr or 0
+--   if not vim.b[bufnr].zen_mode then
+--     vim.b[bufnr].zen_mode = true
+--   else
+--     vim.b[bufnr].zen_mode = false
+--   end
+--   utils.notify(string.format("zen mode %s", bool2str(vim.b[bufnr].zen_mode)))
+--   vim.cmd "ZenMode"
+-- end
 
 return M

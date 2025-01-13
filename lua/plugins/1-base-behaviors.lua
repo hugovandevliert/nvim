@@ -8,17 +8,14 @@
 --       -> stickybuf.nvim         [lock special buffers]
 --       -> mini.bufremove         [smart bufdelete]
 --       -> smart-splits           [move and resize buffers]
---       -> better-scape.nvim      [esc]
 --       -> toggleterm.nvim        [term]
 --       -> session-manager        [session]
 --       -> spectre.nvim           [search and replace in project]
 --       -> neotree file browser   [neotree]
 --       -> nvim-ufo               [folding mod]
 --       -> nvim-neoclip           [nvim clipboard]
---       -> zen-mode.nvim          [distraction free mode]
 --       -> suda.vim               [write as sudo]
 --       -> vim-matchup            [Improved % motion]
---       -> hop.nvim               [go to word visually]
 --       -> nvim-autopairs         [auto close brackets]
 --       -> nvim-ts-autotag        [auto close html tags]
 --       -> lsp_signature.nvim     [auto params help]
@@ -121,16 +118,6 @@ return {
       ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
       ignored_buftypes = { "nofile" },
     },
-  },
-
-  -- better-scape.nvim [esc]
-  -- https://github.com/max397574/better-escape.nvim
-  {
-    "max397574/better-escape.nvim",
-    event = "User BaseDefered",
-    opts = {
-      timeout = 300,
-    }
   },
 
   -- Toggle floating terminal on <F7> [term]
@@ -534,20 +521,6 @@ return {
     opts = {}
   },
 
-  --  zen-mode.nvim [distraction free mode]
-  --  https://github.com/folke/zen-mode.nvim
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-  },
-
-  --  suda.nvim [write as sudo]
-  --  https://github.com/lambdalisue/suda.vim
-  {
-    "lambdalisue/vim-suda",
-    cmd = { "SudaRead", "SudaWrite" },
-  },
-
   --  vim-matchup [improved % motion]
   --  https://github.com/andymass/vim-matchup
   {
@@ -557,14 +530,6 @@ return {
       vim.g.matchup_matchparen_deferred = 1   -- work async
       vim.g.matchup_matchparen_offscreen = {} -- disable status bar icon
     end,
-  },
-
-  --  hop.nvim [go to word visually]
-  --  https://github.com/smoka7/hop.nvim
-  {
-    "smoka7/hop.nvim",
-    cmd = { "HopWord" },
-    opts = { keys = "etovxqpdygfblzhckisuran" }
   },
 
   --  nvim-autopairs [auto close brackets]

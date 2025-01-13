@@ -33,7 +33,6 @@
 --       -> nvim-ufo
 --       -> code documentation                 [docs]
 --       -> ask chatgpt                        [neural]
---       -> hop.nvim
 --       -> mason-lspconfig.nvim               [lsp]
 
 --
@@ -94,13 +93,13 @@ maps.n["<leader>w"] = { "<cmd>w<cr>", desc = "Save" }
 maps.n["<leader>W"] =
 { function() vim.cmd("SudaWrite") end, desc = "Save as sudo" }
 maps.n["<leader>n"] = { "<cmd>enew<cr>", desc = "New file" }
-maps.n["<Leader>/"] = { "gcc", remap = true, desc = "Toggle comment line" }
-maps.x["<Leader>/"] = { "gc", remap = true, desc = "Toggle comment" }
+-- maps.n["<Leader>/"] = { "gcc", remap = true, desc = "Toggle comment line" }
+-- maps.x["<Leader>/"] = { "gc", remap = true, desc = "Toggle comment" }
 maps.n["gx"] =
 { utils.open_with_program, desc = "Open the file under cursor with a program" }
-maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
-maps.n["|"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" }
-maps.n["\\"] = { "<cmd>split<cr>", desc = "Horizontal Split" }
+-- maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
+-- maps.n["|"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" }
+-- maps.n["\\"] = { "<cmd>split<cr>", desc = "Horizontal Split" }
 maps.i["<C-BS>"] = { "<C-W>", desc = "Enable CTRL+backsace to delete." }
 maps.n["0"] =
 { "^", desc = "Go to the fist character of the line (aliases 0 to ^)" }
@@ -122,6 +121,10 @@ maps.n["<Tab>"] = {
   silent = true,
   expr = false,
   desc = "FIX: Prevent TAB from behaving like <C-i>, as they share the same internal code",
+}
+maps.n["<leader>cf"] = {
+  ":let @+=expand('%:.') | :ec 'Copied path to clipboard.'<CR>",
+  silent = true
 }
 
 -- clipboard ---------------------------------------------------------------
@@ -207,8 +210,8 @@ maps.n["<ESC>"] = {
 }
 
 -- Improved tabulation ------------------------------------------------------
-maps.x["<S-Tab>"] = { "<gv", desc = "unindent line" }
-maps.x["<Tab>"] = { ">gv", desc = "indent line" }
+-- maps.x["<S-Tab>"] = { "<gv", desc = "unindent line" }
+-- maps.x["<Tab>"] = { ">gv", desc = "indent line" }
 maps.x["<"] = { "<gv", desc = "unindent line" }
 maps.x[">"] = { ">gv", desc = "indent line" }
 
@@ -345,30 +348,30 @@ maps.n["<leader>bC"] = {
   function() require("heirline-components.buffer").close_all() end,
   desc = "Close all buffers",
 }
-maps.n["<leader>bb"] = {
-  function()
-    require("heirline-components.all").heirline.buffer_picker(
-      function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end
-    )
-  end,
-  desc = "Select buffer from tabline",
-}
-maps.n["<leader>bd"] = {
-  function()
-    require("heirline-components.all").heirline.buffer_picker(
-      function(bufnr) require("heirline-components.buffer").close(bufnr) end
-    )
-  end,
-  desc = "Delete buffer from tabline",
-}
-maps.n["<leader>bl"] = {
-  function() require("heirline-components.buffer").close_left() end,
-  desc = "Close all buffers to the left",
-}
-maps.n["<leader>br"] = {
-  function() require("heirline-components.buffer").close_right() end,
-  desc = "Close all buffers to the right",
-}
+-- maps.n["<leader>bb"] = {
+--   function()
+--     require("heirline-components.all").heirline.buffer_picker(
+--       function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end
+--     )
+--   end,
+--   desc = "Select buffer from tabline",
+-- }
+-- maps.n["<leader>bd"] = {
+--   function()
+--     require("heirline-components.all").heirline.buffer_picker(
+--       function(bufnr) require("heirline-components.buffer").close(bufnr) end
+--     )
+--   end,
+--   desc = "Delete buffer from tabline",
+-- }
+-- maps.n["<leader>bl"] = {
+--   function() require("heirline-components.buffer").close_left() end,
+--   desc = "Close all buffers to the left",
+-- }
+-- maps.n["<leader>br"] = {
+--   function() require("heirline-components.buffer").close_right() end,
+--   desc = "Close all buffers to the right",
+-- }
 maps.n["<leader>bs"] = icons.bs
 maps.n["<leader>bse"] = {
   function() require("heirline-components.buffer").sort "extension" end,
@@ -390,24 +393,24 @@ maps.n["<leader>bsm"] = {
   function() require("heirline-components.buffer").sort "modified" end,
   desc = "Sort by modification (buffers)",
 }
-maps.n["<leader>b\\"] = {
-  function()
-    require("heirline-components.all").heirline.buffer_picker(function(bufnr)
-      vim.cmd.split()
-      vim.api.nvim_win_set_buf(0, bufnr)
-    end)
-  end,
-  desc = "Horizontal split buffer from tabline",
-}
-maps.n["<leader>b|"] = {
-  function()
-    require("heirline-components.all").heirline.buffer_picker(function(bufnr)
-      vim.cmd.vsplit()
-      vim.api.nvim_win_set_buf(0, bufnr)
-    end)
-  end,
-  desc = "Vertical split buffer from tabline",
-}
+-- maps.n["<leader>b\\"] = {
+--   function()
+--     require("heirline-components.all").heirline.buffer_picker(function(bufnr)
+--       vim.cmd.split()
+--       vim.api.nvim_win_set_buf(0, bufnr)
+--     end)
+--   end,
+--   desc = "Horizontal split buffer from tabline",
+-- }
+-- maps.n["<leader>b|"] = {
+--   function()
+--     require("heirline-components.all").heirline.buffer_picker(function(bufnr)
+--       vim.cmd.vsplit()
+--       vim.api.nvim_win_set_buf(0, bufnr)
+--     end)
+--   end,
+--   desc = "Vertical split buffer from tabline",
+-- }
 
 -- quick movement aliases
 maps.n["<C-k>"] = {
@@ -422,24 +425,18 @@ maps.n["<C-j>"] = {
   end,
   desc = "Previous buffer",
 }
-maps.n["<S-Down>"] = {
-  function() vim.api.nvim_feedkeys("5j", "n", true) end,
-  desc = "Fast move down",
-}
-maps.n["<S-Up>"] = {
-  function() vim.api.nvim_feedkeys("5k", "n", true) end,
-  desc = "Fast move up",
-}
+-- maps.n["<S-Down>"] = {
+--   function() vim.api.nvim_feedkeys("5j", "n", true) end,
+--   desc = "Fast move down",
+-- }
+-- maps.n["<S-Up>"] = {
+--   function() vim.api.nvim_feedkeys("5k", "n", true) end,
+--   desc = "Fast move up",
+-- }
 
 -- tabs
 maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
 maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
-
--- zen mode
-if is_available("zen-mode.nvim") then
-  maps.n["<leader>uz"] =
-  { function() ui.toggle_zen_mode() end, desc = "Zen mode" }
-end
 
 -- ui toggles [ui] ---------------------------------------------------------
 maps.n["<leader>u"] = icons.u
@@ -462,7 +459,6 @@ maps.n["<leader>un"] = { ui.change_number, desc = "Change line numbering" }
 maps.n["<leader>uP"] = { ui.toggle_paste, desc = "Paste mode" }
 maps.n["<leader>us"] = { ui.toggle_spell, desc = "Spellcheck" }
 maps.n["<leader>uS"] = { ui.toggle_conceal, desc = "Conceal" }
-maps.n["<leader>ut"] = { ui.toggle_tabline, desc = "Tabline" }
 maps.n["<leader>uu"] = { ui.toggle_url_effect, desc = "URL highlight" }
 maps.n["<leader>uw"] = { ui.toggle_wrap, desc = "Wrap" }
 maps.n["<leader>uy"] = { ui.toggle_buffer_syntax, desc = "Syntax highlight (buffer)" }
@@ -475,37 +471,6 @@ end
 if is_available("mini.animate") then
   maps.n["<leader>uA"] = { ui.toggle_animations, desc = "Animations" }
 end
-
--- shifted movement keys ----------------------------------------------------
-maps.n["<S-Down>"] = {
-  function() vim.api.nvim_feedkeys("7j", "n", true) end,
-  desc = "Fast move down",
-}
-maps.n["<S-Up>"] = {
-  function() vim.api.nvim_feedkeys("7k", "n", true) end,
-  desc = "Fast move up",
-}
-maps.n["<S-PageDown>"] = {
-  function()
-    local current_line = vim.fn.line "."
-    local total_lines = vim.fn.line "$"
-    local target_line = current_line + 1 + math.floor(total_lines * 0.20)
-    if target_line > total_lines then target_line = total_lines end
-    vim.api.nvim_win_set_cursor(0, { target_line, 0 })
-    vim.cmd("normal! zz")
-  end,
-  desc = "Page down exactly a 20% of the total size of the buffer",
-}
-maps.n["<S-PageUp>"] = {
-  function()
-    local current_line = vim.fn.line "."
-    local target_line = current_line - 1 - math.floor(vim.fn.line "$" * 0.20)
-    if target_line < 1 then target_line = 1 end
-    vim.api.nvim_win_set_cursor(0, { target_line, 0 })
-    vim.cmd("normal! zz")
-  end,
-  desc = "Page up exactly 20% of the total size of the buffer",
-}
 
 -- cmdline autocompletion ---------------------------------------------------
 maps.c["<Up>"] = {
@@ -1312,27 +1277,6 @@ if is_available("neural") or is_available("copilot") then
   }
 end
 
--- hop.nvim ----------------------------------------------------------------
-if is_available("hop.nvim") then
-  -- Note that Even though we are using ENTER for hop, you can still select items
-  -- from special menus like 'quickfix', 'q?' and 'q:' with <C+ENTER>.
-
-  maps.n["<C-m>"] = { -- The terminal undersand C-m and ENTER as the same key.
-    function()
-      require("hop")
-      vim.cmd("silent! HopWord")
-    end,
-    desc = "Hop to word",
-  }
-  maps.x["<C-m>"] = { -- The terminal undersand C-m and ENTER as the same key.
-    function()
-      require("hop")
-      vim.cmd("silent! HopWord")
-    end,
-    desc = "Hop to word",
-  }
-end
-
 -- mason-lspconfig.nvim [lsp] -------------------------------------------------
 -- WARNING: Don't delete this section, or you won't have LSP keymappings.
 
@@ -1484,24 +1428,6 @@ if is_autoformat_enabled and is_filetype_allowed and is_filetype_ignored then
       desc = "Toggle global autoformat",
     }
   end
-
-  -- Highlight references when cursor holds
-  utils.add_autocmds_to_buffer("lsp_document_highlight", bufnr, {
-    {
-      events = { "CursorHold", "CursorHoldI" },
-      desc = "highlight references when cursor holds",
-      callback = function()
-        if has_capability("textDocument/documentHighlight", { bufnr = bufnr }) then
-          vim.lsp.buf.document_highlight()
-        end
-      end,
-    },
-    {
-      events = { "CursorMoved", "CursorMovedI", "BufLeave" },
-      desc = "clear references when cursor moves",
-      callback = function() vim.lsp.buf.clear_references() end,
-    },
-  })
 
   -- Other LSP mappings
   lsp_mappings.n["<leader>lL"] = {
