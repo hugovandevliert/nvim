@@ -204,24 +204,24 @@ autocmd({ "VimEnter", "FileType", "BufEnter", "WinEnter" }, {
   desc = "URL Highlighting",
   callback = function() utils.set_url_effect() end,
 })
-
--- 7. Customize right click contextual menu.
-autocmd("VimEnter", {
-  desc = "Disable right contextual menu warning message",
-  callback = function()
-    -- Revome from menu
-    vim.api.nvim_command [[aunmenu PopUp.How-to\ disable\ mouse]]
-    vim.api.nvim_command [[aunmenu PopUp.Inspect]]
-    vim.api.nvim_command [[aunmenu PopUp.-1-]] -- You can remove a separator like this.
-
-    -- Add to menu
-    vim.api.nvim_command [[menu PopUp.Format\ \Code <cmd>silent! Format<CR>]]
-    vim.api.nvim_command [[menu PopUp.-1- <Nop>]]
-    vim.api.nvim_command [[menu PopUp.Toggle\ \Breakpoint <cmd>:lua require('dap').toggle_breakpoint()<CR>]]
-    vim.api.nvim_command [[menu PopUp.Debugger\ \Continue <cmd>:DapContinue<CR>]]
-    vim.api.nvim_command [[menu PopUp.Run\ \Test <cmd>:Neotest run<CR>]]
-  end,
-})
+--
+-- -- 7. Customize right click contextual menu.
+-- autocmd("VimEnter", {
+--   desc = "Disable right contextual menu warning message",
+--   callback = function()
+--     -- Revome from menu
+--     vim.api.nvim_command [[aunmenu PopUp.How-to\ disable\ mouse]]
+--     vim.api.nvim_command [[aunmenu PopUp.Inspect]]
+--     vim.api.nvim_command [[aunmenu PopUp.-1-]] -- You can remove a separator like this.
+--
+--     -- Add to menu
+--     vim.api.nvim_command [[menu PopUp.Format\ \Code <cmd>silent! Format<CR>]]
+--     vim.api.nvim_command [[menu PopUp.-1- <Nop>]]
+--     vim.api.nvim_command [[menu PopUp.Toggle\ \Breakpoint <cmd>:lua require('dap').toggle_breakpoint()<CR>]]
+--     vim.api.nvim_command [[menu PopUp.Debugger\ \Continue <cmd>:DapContinue<CR>]]
+--     vim.api.nvim_command [[menu PopUp.Run\ \Test <cmd>:Neotest run<CR>]]
+--   end,
+-- })
 
 -- 8. Unlist quickfix buffers if the filetype changes.
 autocmd("FileType", {
